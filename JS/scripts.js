@@ -125,13 +125,13 @@ function mensagemWhatsapp(){
     const endereco = prompt("Informe o endereço para entrega:");
 
     const texturi = encodeURI(`Olá, gostaria de fazer o pedido:
-    - Prato: ${prato.innerHTML}
-    - Bebida: ${bebida.innerHTML}
-    - Sobremesa: ${sobremesa.innerHTML}
-    Total: ${total}
+- Prato: ${prato.innerHTML}
+- Bebida: ${bebida.innerHTML}
+- Sobremesa: ${sobremesa.innerHTML}
+Total: ${total}
 
-    ${Cliente}
-    ${endereco}`
+Nome: ${Cliente}
+Endereço: ${endereco}`
     );
     const linkurl =`https://wa.me/5584998514181?text=${texturi}`;
     open(linkurl);
