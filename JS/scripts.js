@@ -1,6 +1,7 @@
 let prato;
 let bebida;
 let sobremesa;
+let total;
 
 function selecionarPrato(produto){
 
@@ -71,15 +72,15 @@ function conferirPedido(){
     let n= 3
 
     //link das comidas para confirmação
-    const prato = document.querySelector('.prato .item.selecionado p.a700-16');
+    prato = document.querySelector('.prato .item.selecionado p.a700-16');
     const Rprato = document.querySelector('.Rprato');
     Rprato.innerHTML = prato.innerHTML;
 
-    const bebida = document.querySelector('.bebida .item.selecionado p.a700-16');
+    bebida = document.querySelector('.bebida .item.selecionado p.a700-16');
     const Rbebida = document.querySelector('.Rbebida');
     Rbebida.innerHTML = bebida.innerHTML;
 
-    const sobremesa = document.querySelector('.sobremesa .item.selecionado p.a700-16');
+    sobremesa = document.querySelector('.sobremesa .item.selecionado p.a700-16');
     const Rsobremesa = document.querySelector('.Rsobremesa');
     Rsobremesa.innerHTML = sobremesa.innerHTML;
 
@@ -109,29 +110,32 @@ function conferirPedido(){
 
     const Ptotal = document.querySelector('.precoTotal');
 
-    let total = Vprato + Vbebida + Vsobremesa;
+    total = Vprato + Vbebida + Vsobremesa;
     total = total.toFixed(2);
     let total2
     total2 = "R$ " + total.toString().replace(".",",");  
-    Ptotal.innerHTML = total2; 
-
-    // Adiciona valores à mensagem do pedido para enviar no whatsapp
-
-    const Mprato = document.querySelector('p.Mprato');
-    Mprato.innerHTML = "- Prato: " + prato.innerHTML
-
-    const Mbebida = document.querySelector('p.Mbebida');
-    Mbebida.innerHTML = "- Bebida: " + bebida.innerHTML
-
-    const Msobremesa = document.querySelector('p.Msobremesa');
-    Msobremesa.innerHTML = "- Sobremesa: " + sobremesa.innerHTML
-
-    const Mtotal = document.querySelector('p.Mtotal');
-    Mtotal.innerHTML = "- Total: " + total
+    Ptotal.innerHTML = total2;     
 }   
 
+function mensagemWhatsapp(){
+// Adiciona valores à mensagem do pedido para enviar no whatsapp
 
+    const Cliente = prompt("Informe o seu nome:");
+    
+    const endereco = prompt("Informe o endereço para entrega:");
 
+    const texturi = encodeURI(`Olá, gostaria de fazer o pedido:
+    - Prato: ${prato.innerHTML}
+    - Bebida: ${bebida.innerHTML}
+    - Sobremesa: ${sobremesa.innerHTML}
+    Total: ${total}
+
+    ${Cliente}
+    ${endereco}`
+    );
+    const linkurl =`https://wa.me/5584998514181?text=${texturi}`;
+    open(linkurl);
+}
 function botaoCancelar(){
     const fundo = document.querySelector('.fundoFecharPedido');
         fundo.classList.remove('habilitar');
