@@ -61,40 +61,63 @@ function fecharPedido(){
 
         const painel = document.querySelector('.confirmarPedido');
         painel.classList.add('habilitar');
+
+        conferirPedido();
     }
 }
 
-
-
-
- /*function jogar(){
-    if ( jogo !== undefined ){
-        // se a quantidade de jogadores estiver selecionada
-        if (qtdeJogadores !== undefined){
-            // pegar o painel e adicionar a classe escondido 
-            const painel = document.querySelector('.selecionar-jogo');
-            painel.classList.add('escondido');
-
-            // pegar o painel com a classe loading-overlay e remover a classe escondido 
-            const painelIniciarJogo = document.querySelector('.loading-overlay');
-            painelIniciarJogo.classList.remove('escondido');
-
-            // e vai definir a mensagem com o jogo selecionado e a quantidade de jogadores
-            const paragrafo = document.querySelector('.mensagem-iniciando');
-            paragrafo.innerHTML = `INICIANDO POKER 100 com o jogo ${jogo} e quantidade de jogadores ${qtdeJogadores}`;
-        }
-    }
-}
-
-function habilitaBotaoContinuar(){
-    // se o jogo estiver selecionado
-    if ( jogo !== undefined ){
-        // se a quantidade de jogadores estiver selecionada
-        if (qtdeJogadores !== undefined){
-            // habilitar o botao continuar
-            const botaoContinuar = document.querySelector('.botao-continuar');
-            botaoContinuar.classList.add('selecionado');
-        }
-    }
+function conferirPedido(){
     
-} */
+    let n= 3
+
+    //link das comidas para confirmação
+    const prato = document.querySelector('.prato .item.selecionado p.a700-16');
+    const Rprato = document.querySelector('.Rprato');
+    Rprato.innerHTML = prato.innerHTML;
+
+    const bebida = document.querySelector('.bebida .item.selecionado p.a700-16');
+    const Rbebida = document.querySelector('.Rbebida');
+    Rbebida.innerHTML = bebida.innerHTML;
+
+    const sobremesa = document.querySelector('.sobremesa .item.selecionado p.a700-16');
+    const Rsobremesa = document.querySelector('.Rsobremesa');
+    Rsobremesa.innerHTML = sobremesa.innerHTML;
+
+    //Link dos preços para confirmação
+    const Pprato = document.querySelector('.prato .item.selecionado p.a400-16');
+    const precoPrato = document.querySelector('.precoPrato');
+    precoPrato.innerHTML = Pprato.innerHTML.substring(n);
+
+    const Pbebida = document.querySelector('.bebida .item.selecionado p.a400-16');
+    const precobebida = document.querySelector('.precoBebida');
+    precobebida.innerHTML = Pbebida.innerHTML.substring(n);
+
+    const Psobremesa = document.querySelector('.sobremesa .item.selecionado p.a400-16');
+    const precosobremesa = document.querySelector('.precoSobremesa');
+    precosobremesa.innerHTML = Psobremesa.innerHTML.substring(n);  
+
+    //Soma para valor Total
+
+    let Vprato = Pprato.innerHTML.substring(n);
+    Vprato = Number(Vprato.replace(",","."));
+
+    let Vbebida = Pbebida.innerHTML.substring(n);
+    Vbebida = Number(Vbebida.replace(",","."));
+
+    let Vsobremesa = Psobremesa.innerHTML.substring(n);
+    Vsobremesa = Number(Vsobremesa.replace(",","."));
+
+    const Ptotal = document.querySelector('.precoTotal');
+
+    let total = Vprato + Vbebida + Vsobremesa;
+    total = "R$ " + total.toString().replace(".",",") + 0;  
+    Ptotal.innerHTML = total; 
+}
+
+function botaoCancelar(){
+    const fundo = document.querySelector('.fundoFecharPedido');
+        fundo.classList.remove('habilitar');
+
+        const painel = document.querySelector('.confirmarPedido');
+        painel.classList.remove('habilitar');
+}
