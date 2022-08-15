@@ -110,9 +110,27 @@ function conferirPedido(){
     const Ptotal = document.querySelector('.precoTotal');
 
     let total = Vprato + Vbebida + Vsobremesa;
-    total = "R$ " + total.toString().replace(".",",") + 0;  
-    Ptotal.innerHTML = total; 
-}
+    total = total.toFixed(2);
+    let total2
+    total2 = "R$ " + total.toString().replace(".",",");  
+    Ptotal.innerHTML = total2; 
+
+    // Adiciona valores à mensagem do pedido para enviar no whatsapp
+
+    const Mprato = document.querySelector('p.Mprato');
+    Mprato.innerHTML = "- Prato: " + prato.innerHTML
+
+    const Mbebida = document.querySelector('p.Mbebida');
+    Mbebida.innerHTML = "- Bebida: " + bebida.innerHTML
+
+    const Msobremesa = document.querySelector('p.Msobremesa');
+    Msobremesa.innerHTML = "- Sobremesa: " + sobremesa.innerHTML
+
+    const Mtotal = document.querySelector('p.Mtotal');
+    Mtotal.innerHTML = "- Total: " + total
+}   
+
+
 
 function botaoCancelar(){
     const fundo = document.querySelector('.fundoFecharPedido');
