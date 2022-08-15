@@ -54,8 +54,20 @@ function habilitaFecharPedido(){
     }
 }
 
+function fecharPedido(){
+    if ( prato !== undefined && bebida !== undefined && sobremesa !== undefined){
+        const fundo = document.querySelector('.fundoFecharPedido');
+        fundo.classList.add('habilitar');
 
-/* function jogar(){
+        const painel = document.querySelector('.confirmarPedido');
+        painel.classList.add('habilitar');
+    }
+}
+
+
+
+
+ /*function jogar(){
     if ( jogo !== undefined ){
         // se a quantidade de jogadores estiver selecionada
         if (qtdeJogadores !== undefined){
