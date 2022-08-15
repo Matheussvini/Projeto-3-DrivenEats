@@ -99,7 +99,8 @@ h2{
 .item img{
     height: 87px;
     border-radius: 4px;
-    margin-right: 14px;    
+    margin-right: 14px;
+    margin: 0 auto;    
 }
 .base{
     width: 100%;
@@ -201,5 +202,12 @@ h2{
 }
 .habilitar{
     display: flex;
+}
+.image{
+    height: 87px;
+    width: 144px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
